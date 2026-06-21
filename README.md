@@ -10,8 +10,6 @@ This repository does **not** include the official competition images, private su
 
 The name comes from the idea of a mind palace. A mind palace is also known as the method of loci: a memory technique that places ideas into imagined locations so they can be found, checked, and recalled. The word `loci` is the plural of the Latin `locus`, meaning a place, position, or location.
 
-That image fits this project well. Locus turns thousands of molecule images into structured, named positions in a reviewable workflow: each file has a place, each prediction has a trace, and each correction can be located again.
-
 ## What It Does
 
 - Sends molecule images to the public MolParser OCSR endpoint and stores resumable CSV results.
@@ -240,8 +238,6 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 ## 为什么叫 Locus？
 
 这个名字来自“思维殿堂”（mind palace）的意象。思维殿堂也叫“记忆宫殿法”（method of loci）：把信息放进一个想象中的空间位置里，之后就能沿着位置重新找到、检查和回忆。`loci` 是拉丁语 `locus` 的复数，`locus` 的意思是场所、位置。
-
-这个含义和项目本身很贴合。Locus 要做的是把几千张分子图片放进一个可定位、可追踪、可复核的流程里：每个文件有自己的位置，每个预测有来源记录，每次修正也能被重新找到。
 
 ## 它能做什么
 
