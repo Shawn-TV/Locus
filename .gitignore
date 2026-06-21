@@ -1,0 +1,36 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.venv/
+venv/
+env/
+
+# Competition data and private outputs are intentionally not published.
+data/
+pic/
+submission_template/
+submission_example/
+work/
+build/
+outputs/
+reports/
+audits/
+runs/
+V*/
+V*.zip
+*submit*.zip
+
+# Model weights can be large and are governed by their upstream licenses.
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# Local competition corrections are not committed by default. Use examples/ for
+# the public schema.
+tools/*_overrides.csv
+

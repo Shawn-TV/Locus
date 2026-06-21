@@ -1,0 +1,4 @@
+file_name,e_smiles,note
+mol_0001.png,CCO<sep>,Example manual correction for one image
+mol_0002.png,c1ccccc1<sep><a>0:Ph</a>,Example E-SMILES annotation format
+

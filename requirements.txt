@@ -1,0 +1,6 @@
+pillow>=10.0
+numpy>=1.24
+opencv-python>=4.8
+scikit-image>=0.21
+rdkit>=2023.9
+
