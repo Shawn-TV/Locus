@@ -40,7 +40,17 @@ In three sentences:
 
 The screenshots below use the bundled public demo dataset in `examples/demo/`. They do not contain competition images or private submissions.
 
-![Locus Review workbench](docs/images/locus-review-workbench.png)
+<p align="center">
+  <img src="docs/images/locus-review-workbench.png" alt="Locus Review workbench" width="900">
+  <br>
+  <sub>Full local review workbench: queue, original image, editable E-SMILES, and live RDKit rendering.</sub>
+</p>
+
+<p align="center">
+  <img src="docs/images/locus-review-editor-detail.png" alt="Locus Review editor detail" width="560">
+  <br>
+  <sub>Editor detail: candidate comparison, Chinese risk reasons, and the live rendering panel.</sub>
+</p>
 
 The workbench is built around a simple review loop: pick a risky sample, compare the original image with the RDKit rendering, edit the E-SMILES, then let the tool autosave the full working CSV.
 
@@ -50,8 +60,6 @@ The workbench is built around a simple review loop: pick a risky sample, compare
 | Original image | The source molecule image with zoom and fit controls | Compare the visual structure, labels, rings, and stereochemistry against the prediction |
 | E-SMILES editor | Editable submission value, candidate result, Chinese risk reasons, notes | Correct the row while keeping the competing candidates and audit hints nearby |
 | RDKit check | Live rendering, sample metadata, export controls | Verify the edited E-SMILES visually and export the full corrected package |
-
-![Locus Review editor detail](docs/images/locus-review-editor-detail.png)
 
 ### Demo Quick Start
 
@@ -377,7 +385,17 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 
 下面的截图使用仓库自带的公开 demo 数据，位置在 `examples/demo/`。这些截图不包含比赛图片，也不包含私人提交结果。
 
-![Locus Review 工作台](docs/images/locus-review-workbench.png)
+<p align="center">
+  <img src="docs/images/locus-review-workbench.png" alt="Locus Review 工作台" width="900">
+  <br>
+  <sub>完整本地复查工作台：队列、原图、可编辑 E-SMILES 和实时 RDKit 回画。</sub>
+</p>
+
+<p align="center">
+  <img src="docs/images/locus-review-editor-detail.png" alt="Locus Review 编辑细节" width="560">
+  <br>
+  <sub>编辑区细节：候选对比、中文风险原因和实时回画面板。</sub>
+</p>
 
 这个工作台围绕一个很直接的复查循环设计：先点开高风险样本，对比原图和 RDKit 回画图，修改 E-SMILES，然后让工具自动保存全量工作 CSV。
 
@@ -387,8 +405,6 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 | 原图区域 | 原始分子图片，支持缩放和适配 | 对比分子骨架、标签、环系和立体化学是否一致 |
 | E-SMILES 编辑区 | 当前提交值、高分候选、中文风险原因、备注 | 直接修改这一行，同时参考候选结果和审计提示 |
 | RDKit 核查区 | 实时回画图、样本信息、导出按钮 | 视觉核验修改后的 E-SMILES，并导出全量修正包 |
-
-![Locus Review 编辑细节](docs/images/locus-review-editor-detail.png)
 
 ### Demo 快速体验
 
