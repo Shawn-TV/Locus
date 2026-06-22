@@ -18,7 +18,79 @@ The name comes from the idea of a mind palace. A mind palace is also known as th
 - Normalizes model outputs into the competition's E-SMILES style.
 - Uses RDKit to check whether the base SMILES is parseable.
 - Renders predicted structures back to images and produces visual review sheets for human audit.
+- Opens a local review workbench for comparing original molecule images with rendered E-SMILES and saving human corrections.
 - Builds a platform-ready zip containing only `submission.csv` and `meta.md`.
+
+## Start Here
+
+In three sentences:
+
+- Locus turns molecule images into E-SMILES submission drafts.
+- Locus Review opens a local browser workbench where a human can compare the source image with an RDKit rendering and correct the E-SMILES.
+- The repository contains workflow code and review-tool code, but not private competition images, final submissions, generated portable zips, or third-party service code.
+
+| If you want to... | Go here first | You will use |
+| --- | --- | --- |
+| Run the OCSR workflow | Quick Start | `tools/run_molparser_api.py`, `tools/run_molparser_variants.py`, `tools/make_submission.py` |
+| Review and correct an existing submission | Locus Review Workbench | `tools/review_edit_server.py`, `tools/launch_review_editor.py` |
+| Package a corrected answer | Locus Review Workbench or Quick Start | `final_review_editor/working_submission_package.zip` or `tools/make_submission.py` |
+| Understand private-data boundaries | Data Preparation, Third-Party Tools and Licenses | local `data/`, `work/`, and `final_review_editor/` folders |
+
+## Locus Review Workbench
+
+Locus Review is a local browser workbench for human correction of E-SMILES predictions. It is not a hosted service; it runs on `127.0.0.1`, reads local files, and saves a local working CSV.
+
+The workbench is sibling-born with [HailBerry](https://github.com/Shawn-TV/HailBerry). Both projects use the same review philosophy: model outputs are drafts, the browser UI is a local workstation, and human review is the final authority. HailBerry Review focuses on reaction-image JSON annotations, while Locus Review focuses on molecule-image E-SMILES correction.
+
+The interface has three working areas:
+
+- Left: sample list, risk filters, search, page controls, and review progress.
+- Middle: original molecule image with zoom and fit controls.
+- Right: E-SMILES editor, candidate/risk notes, RDKit rendering, export buttons, and review metadata.
+
+The renderer supports the E-SMILES tags used by this workflow:
+
+- `<a>idx:label</a>` atom labels, including `<dum>` labels rendered back as `*`.
+- `<r>idx:label</r>` ring labels, including multiple labels on the same ring.
+- Base SMILES rendering through RDKit, including stereochemistry where RDKit can draw it.
+
+RDKit layout is used for review, so orientation and spacing may differ from the original image. The rendering is a visual audit aid, not a proof of chemical correctness.
+
+### One-Click Review Launch
+
+The repository includes desktop launch scripts. Keep the terminal window open while using the browser page.
+
+| System | One-click file | How to use |
+| --- | --- | --- |
+| macOS | `Start-Locus-Review.command` | Double-click the file. If macOS blocks it, right-click and choose Open. |
+| Windows | `Start-Locus-Review.bat` | Double-click the file. In source-code checkouts it uses local Python; packaged portable zips may include a bundled runtime. |
+| Linux | `start-locus-review.sh` | Run `chmod +x start-locus-review.sh` once, then run it from a terminal. |
+
+Manual launch works on every system:
+
+```bash
+python tools/launch_review_editor.py
+```
+
+The launcher looks for:
+
+```text
+data/pic/                              molecule images
+Track1-V1-final-submit/submission.csv  base submission to review
+Track1-V1-final-submit/meta.md         metadata copied into exported zip
+final_top300_review/top300_risk_list.csv optional risk queue
+```
+
+Generated review files are saved locally:
+
+```text
+final_review_editor/working_submission.csv
+final_review_editor/review_overrides.csv
+final_review_editor/review_state.json
+final_review_editor/working_submission_package.zip
+```
+
+These local files are intentionally ignored by Git.
 
 ## Repository Layout
 
@@ -30,10 +102,16 @@ Locus/
 │   ├── run_molscribe.py              # Optional MolScribe fallback runner
 │   ├── run_decimer.py                # Optional DECIMER fallback runner
 │   ├── audit_v1_render_compare.py    # RDKit rendering and visual-risk audit
-│   └── make_submission.py            # Merge candidates and build the final zip
+│   ├── make_submission.py            # Merge candidates and build the final zip
+│   ├── review_edit_server.py         # Local browser review workbench
+│   └── launch_review_editor.py       # Cross-platform review launcher
 ├── examples/
 │   └── overrides.example.csv         # Public example of the manual correction format
+├── Start-Locus-Review.bat
+├── Start-Locus-Review.command
+├── start-locus-review.sh
 ├── requirements.txt
+├── requirements-review.txt
 ├── LICENSE
 └── README.md
 ```
@@ -247,7 +325,79 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 - 把模型输出整理成比赛需要的 E-SMILES 风格。
 - 使用 RDKit 检查底层 SMILES 是否可解析。
 - 把预测结构重新渲染成分子图片，生成方便人工审阅的对比图。
+- 打开本地复查工作台，对比原图和 E-SMILES 回画图，并保存人工修正。
 - 打包生成平台可提交的 zip，里面只包含 `submission.csv` 和 `meta.md`。
+
+## 从这里开始
+
+三句话版：
+
+- Locus 把分子图片整理成 E-SMILES 提交草稿。
+- Locus Review 会打开一个本地浏览器工作台，让人工对比原图和 RDKit 回画图，并修正 E-SMILES。
+- 本仓库包含流程代码和复查工具代码，但不包含私人比赛图片、最终提交包、生成好的便携 zip 或第三方服务代码。
+
+| 你想做什么 | 先看哪里 | 会用到 |
+| --- | --- | --- |
+| 跑 OCSR 流程 | 快速开始 | `tools/run_molparser_api.py`、`tools/run_molparser_variants.py`、`tools/make_submission.py` |
+| 复查并修正已有提交 | Locus Review 工作台 | `tools/review_edit_server.py`、`tools/launch_review_editor.py` |
+| 打包修正后的答案 | Locus Review 工作台或快速开始 | `final_review_editor/working_submission_package.zip` 或 `tools/make_submission.py` |
+| 理解哪些数据不会开源 | 准备数据、第三方工具与许可证 | 本地 `data/`、`work/`、`final_review_editor/` 目录 |
+
+## Locus Review 工作台
+
+Locus Review 是一个本地浏览器工作台，用来人工修正 E-SMILES 预测。它不是云服务；它运行在 `127.0.0.1`，读取本地文件，并把结果保存到本地工作 CSV。
+
+这个工作台和 [HailBerry](https://github.com/Shawn-TV/HailBerry) 同源。两个项目使用同一套复查理念：模型输出只是草稿，本地浏览器 UI 是人工工作台，最终判断权在人工复核。HailBerry Review 面向反应图片 JSON 标注，Locus Review 面向分子图片 E-SMILES 修正。
+
+界面分成三个工作区域：
+
+- 左侧：样本列表、风险筛选、搜索、分页和复查进度。
+- 中间：原始分子图片，支持缩放和适配。
+- 右侧：E-SMILES 编辑器、候选/风险说明、RDKit 回画、导出按钮和复查状态。
+
+本地渲染器支持这个流程里用到的 E-SMILES 标签：
+
+- `<a>idx:label</a>` 原子标签，包括会渲染回 `*` 的 `<dum>` 标签。
+- `<r>idx:label</r>` 环标签，包括同一个环上的多个标签。
+- 底层 SMILES 由 RDKit 回画，立体化学按 RDKit 能表达的方式显示。
+
+RDKit 会自动排版，所以分子朝向、间距可能和原图不完全一样。这个渲染结果用于人工审阅，不等于化学正确性的证明。
+
+### 一键启动复查工具
+
+仓库包含桌面启动脚本。使用网页时请保持终端/黑色窗口打开。
+
+| 系统 | 一键文件 | 用法 |
+| --- | --- | --- |
+| macOS | `Start-Locus-Review.command` | 双击运行。如果 macOS 阻止，可以右键选择“打开”。 |
+| Windows | `Start-Locus-Review.bat` | 双击运行。源码 checkout 会使用本机 Python；打包好的便携 zip 可以内置运行时。 |
+| Linux | `start-locus-review.sh` | 先运行一次 `chmod +x start-locus-review.sh`，再从终端启动。 |
+
+所有系统也都可以手动启动：
+
+```bash
+python tools/launch_review_editor.py
+```
+
+启动器会查找：
+
+```text
+data/pic/                              分子图片
+Track1-V1-final-submit/submission.csv  要复查的基础提交
+Track1-V1-final-submit/meta.md         导出 zip 时复制的元信息
+final_top300_review/top300_risk_list.csv 可选风险队列
+```
+
+复查生成的文件会保存在本地：
+
+```text
+final_review_editor/working_submission.csv
+final_review_editor/review_overrides.csv
+final_review_editor/review_state.json
+final_review_editor/working_submission_package.zip
+```
+
+这些本地文件默认会被 Git 忽略。
 
 ## 仓库结构
 
@@ -259,10 +409,16 @@ Locus/
 │   ├── run_molscribe.py              # 可选的 MolScribe 补充识别脚本
 │   ├── run_decimer.py                # 可选的 DECIMER 补充识别脚本
 │   ├── audit_v1_render_compare.py    # RDKit 回画与视觉风险审计
-│   └── make_submission.py            # 合并结果并生成最终提交包
+│   ├── make_submission.py            # 合并结果并生成最终提交包
+│   ├── review_edit_server.py         # 本地浏览器复查工作台
+│   └── launch_review_editor.py       # 跨平台复查启动器
 ├── examples/
 │   └── overrides.example.csv         # 公开的人工修正表格式示例
+├── Start-Locus-Review.bat
+├── Start-Locus-Review.command
+├── start-locus-review.sh
 ├── requirements.txt
+├── requirements-review.txt
 ├── LICENSE
 └── README.md
 ```
