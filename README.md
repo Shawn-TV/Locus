@@ -6,6 +6,12 @@ The project is designed as a practical competition toolkit rather than a single 
 
 This repository does **not** include the official competition images, private submission files, generated zip packages, third-party model weights, or proprietary MolParser service code.
 
+## Workflow Diagram
+
+<p align="center">
+  <img src="docs/images/locus-workflow.svg" alt="Locus workflow diagram" width="1000">
+</p>
+
 ## Why "Locus"?
 
 The name comes from the idea of a mind palace. A mind palace is also known as the method of loci: a memory technique that places ideas into imagined locations so they can be found, checked, and recalled. The word `loci` is the plural of the Latin `locus`, meaning a place, position, or location.
@@ -344,6 +350,12 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 这个项目不是单一神经网络，而是一个实用的比赛工具包。它可以批量调用识别服务、生成更容易识别的图片预处理版本、合并多个模型结果、把预测结果重新画成分子图用于人工核验，最后生成比赛要求的 `submission.csv` + `meta.md` 压缩包。
 
 本仓库**不包含**官方比赛图片、私人提交结果、生成好的 zip 包、第三方模型权重，也不包含 MolParser 的专有服务代码。
+
+## 工作流图示
+
+<p align="center">
+  <img src="docs/images/locus-workflow-zh.svg" alt="Locus 工作流图示" width="1000">
+</p>
 
 ## 为什么叫 Locus？
 

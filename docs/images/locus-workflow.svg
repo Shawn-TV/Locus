@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="340" viewBox="0 0 1320 340" role="img" aria-labelledby="title desc">
+  <title id="title">Locus workflow diagram</title>
+  <desc id="desc">Workflow diagram showing how Locus converts molecule images into reviewed Extended-SMILES submission files.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#566274"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#233044" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg{fill:#f7f9fc}.title{font:800 36px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}.sub{font:500 17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#667386}.card{fill:#fff;stroke:#dbe3ee;stroke-width:1.4;filter:url(#shadow)}.cap,.chip{fill:#fff}.chip{stroke:#d6e1ec;stroke-width:1.1}.step{font:800 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#fff}.h{font:800 19px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}.t{font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#5d6879}.tiny{font:500 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#69778b}.chip-title{font:800 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}.panel-title{font:800 17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#172033}.arrow{stroke:#566274;stroke-width:2.7;fill:none;marker-end:url(#arrow);stroke-linecap:round}.line{stroke:#cbd6e4;stroke-width:1.3}
+    </style>
+  </defs>
+  <rect class="bg" width="1320" height="640"/>
+  <text class="title" x="56" y="62">Locus Workflow Diagram</text>
+  <text class="sub" x="56" y="90">From molecule images to reviewed Extended-SMILES submission files</text>
+
+  <g transform="translate(56 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#2d7189"/>
+    <circle cx="28" cy="34" r="16" fill="#2d7189"/><text class="step" x="24" y="39">1</text>
+    <text class="h" x="22" y="70">Input images</text>
+    <text class="t" x="22" y="98">molecule drawings</text>
+    <text class="t" x="22" y="119">one file per row</text>
+  </g>
+  <path class="arrow" d="M225 208h34"/>
+
+  <g transform="translate(268 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#586f3b"/>
+    <circle cx="28" cy="34" r="16" fill="#586f3b"/><text class="step" x="24" y="39">2</text>
+    <text class="h" x="22" y="70">Preprocess</text>
+    <text class="t" x="22" y="98">crop, pad, upscale</text>
+    <text class="t" x="22" y="119">binary/color cleanup</text>
+  </g>
+  <path class="arrow" d="M437 208h34"/>
+
+  <g transform="translate(480 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#8a6b2e"/>
+    <circle cx="28" cy="34" r="16" fill="#8a6b2e"/><text class="step" x="24" y="39">3</text>
+    <text class="h" x="22" y="70">OCSR pass</text>
+    <text class="t" x="22" y="98">MolParser primary</text>
+    <text class="t" x="22" y="119">optional fallbacks</text>
+  </g>
+  <path class="arrow" d="M649 208h34"/>
+
+  <g transform="translate(692 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#745c9b"/>
+    <circle cx="28" cy="34" r="16" fill="#745c9b"/><text class="step" x="24" y="39">4</text>
+    <text class="h" x="22" y="70">Select</text>
+    <text class="t" x="22" y="98">rank candidates</text>
+    <text class="t" x="22" y="119">normalize E-SMILES</text>
+  </g>
+  <path class="arrow" d="M861 208h34"/>
+
+  <g transform="translate(904 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#b65648"/>
+    <circle cx="28" cy="34" r="16" fill="#b65648"/><text class="step" x="24" y="39">5</text>
+    <text class="h" x="22" y="70">Review</text>
+    <text class="t" x="22" y="98">RDKit rendering</text>
+    <text class="t" x="22" y="119">manual overrides</text>
+  </g>
+  <path class="arrow" d="M1073 208h34"/>
+
+  <g transform="translate(1116 142)">
+    <rect class="card" width="160" height="132" rx="15"/>
+    <rect width="160" height="7" rx="3.5" fill="#2c7b75"/>
+    <circle cx="28" cy="34" r="16" fill="#2c7b75"/><text class="step" x="24" y="39">6</text>
+    <text class="h" x="22" y="70">Export</text>
+    <text class="t" x="22" y="98">submission.csv</text>
+    <text class="t" x="22" y="119">+ meta.md zip</text>
+  </g>
+</svg>
