@@ -1,0 +1,4 @@
+rank,page,slot,file_name,risk,reasons,orig_score,best_source,best_score,diff_source,diff_score,v1_atoms,v1_esmi,diff_candidate
+1,demo,1,mol_demo_0001.png,72.400,medium-low original score 0.842; render visual mismatch phash 18; ink density delta 0.04,0.842,molparser_molparser_variants_safe,0.970,molparser_molparser_variants_safe,0.970,13,CC(=O)Oc1ccccc1C(=O)O<sep>,CC(=O)Oc1ccccc1C(=O)*<sep><a>12:OH</a>
+2,demo,2,mol_demo_0002.png,68.200,has E-SMILES labels; high-score different candidate molparser_molparser_variants_safe:0.970,0.781,molparser_molparser_variants_safe,0.970,molparser_molparser_variants_safe,0.970,7,*c1ccccc1<sep><a>0:NH2</a>,Nc1ccccc1<sep>
+3,demo,3,mol_demo_0003.png,61.900,has E-SMILES labels; colored/label-heavy image 0.038,0.913,molparser_original,0.913,molparser_molparser_variants_safe,0.970,6,C1CCCCC1<sep><r>0:R</r>,C1CCCCC1<sep>

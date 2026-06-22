@@ -36,6 +36,33 @@ In three sentences:
 | Package a corrected answer | Locus Review Workbench or Quick Start | `final_review_editor/working_submission_package.zip` or `tools/make_submission.py` |
 | Understand private-data boundaries | Data Preparation, Third-Party Tools and Licenses | local `data/`, `work/`, and `final_review_editor/` folders |
 
+## Review Tool Preview
+
+The screenshots below use the bundled public demo dataset in `examples/demo/`. They do not contain competition images or private submissions.
+
+![Locus Review workbench](docs/images/locus-review-workbench.png)
+
+The workbench is built around a simple review loop: pick a risky sample, compare the original image with the RDKit rendering, edit the E-SMILES, then let the tool autosave the full working CSV.
+
+| Area | What you see | What it is for |
+| --- | --- | --- |
+| Left rail | Risk queue, search, filters, progress, changed/flagged counts | Move through high-risk samples first, then review or search the full dataset |
+| Original image | The source molecule image with zoom and fit controls | Compare the visual structure, labels, rings, and stereochemistry against the prediction |
+| E-SMILES editor | Editable submission value, candidate result, Chinese risk reasons, notes | Correct the row while keeping the competing candidates and audit hints nearby |
+| RDKit check | Live rendering, sample metadata, export controls | Verify the edited E-SMILES visually and export the full corrected package |
+
+![Locus Review editor detail](docs/images/locus-review-editor-detail.png)
+
+### Demo Quick Start
+
+To open the same demo screen shown above:
+
+```bash
+python tools/launch_review_editor.py --demo
+```
+
+The demo uses five synthetic molecule images generated for this repository. Review output is written to your temporary folder, so trying the demo will not edit private competition files.
+
 ## Locus Review Workbench
 
 Locus Review is a local browser workbench for human correction of E-SMILES predictions. It is not a hosted service; it runs on `127.0.0.1`, reads local files, and saves a local working CSV.
@@ -106,7 +133,10 @@ Locus/
 │   ├── review_edit_server.py         # Local browser review workbench
 │   └── launch_review_editor.py       # Cross-platform review launcher
 ├── examples/
+│   ├── demo/                         # Public synthetic demo for the review UI
 │   └── overrides.example.csv         # Public example of the manual correction format
+├── docs/
+│   └── images/                       # README screenshots
 ├── Start-Locus-Review.bat
 ├── Start-Locus-Review.command
 ├── start-locus-review.sh
@@ -343,6 +373,33 @@ Locus 是一个开源的分子结构图识别（OCSR）和 E-SMILES 提交包生
 | 打包修正后的答案 | Locus Review 工作台或快速开始 | `final_review_editor/working_submission_package.zip` 或 `tools/make_submission.py` |
 | 理解哪些数据不会开源 | 准备数据、第三方工具与许可证 | 本地 `data/`、`work/`、`final_review_editor/` 目录 |
 
+## 复查工具预览
+
+下面的截图使用仓库自带的公开 demo 数据，位置在 `examples/demo/`。这些截图不包含比赛图片，也不包含私人提交结果。
+
+![Locus Review 工作台](docs/images/locus-review-workbench.png)
+
+这个工作台围绕一个很直接的复查循环设计：先点开高风险样本，对比原图和 RDKit 回画图，修改 E-SMILES，然后让工具自动保存全量工作 CSV。
+
+| 区域 | 你会看到什么 | 用来做什么 |
+| --- | --- | --- |
+| 左侧列表 | 风险队列、搜索、筛选、进度、修改/存疑统计 | 优先处理高风险样本，也可以搜索和复查全量数据 |
+| 原图区域 | 原始分子图片，支持缩放和适配 | 对比分子骨架、标签、环系和立体化学是否一致 |
+| E-SMILES 编辑区 | 当前提交值、高分候选、中文风险原因、备注 | 直接修改这一行，同时参考候选结果和审计提示 |
+| RDKit 核查区 | 实时回画图、样本信息、导出按钮 | 视觉核验修改后的 E-SMILES，并导出全量修正包 |
+
+![Locus Review 编辑细节](docs/images/locus-review-editor-detail.png)
+
+### Demo 快速体验
+
+如果只是想打开和上图一样的 demo 页面，可以运行：
+
+```bash
+python tools/launch_review_editor.py --demo
+```
+
+demo 使用 5 张为本仓库生成的合成分子图。复查输出会写到系统临时目录里，所以试用 demo 不会修改私人比赛文件。
+
 ## Locus Review 工作台
 
 Locus Review 是一个本地浏览器工作台，用来人工修正 E-SMILES 预测。它不是云服务；它运行在 `127.0.0.1`，读取本地文件，并把结果保存到本地工作 CSV。
@@ -413,7 +470,10 @@ Locus/
 │   ├── review_edit_server.py         # 本地浏览器复查工作台
 │   └── launch_review_editor.py       # 跨平台复查启动器
 ├── examples/
+│   ├── demo/                         # 复查 UI 的公开合成 demo
 │   └── overrides.example.csv         # 公开的人工修正表格式示例
+├── docs/
+│   └── images/                       # README 截图
 ├── Start-Locus-Review.bat
 ├── Start-Locus-Review.command
 ├── start-locus-review.sh

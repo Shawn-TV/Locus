@@ -1,0 +1,6 @@
+file_name,e_smiles
+mol_demo_0001.png,CC(=O)Oc1ccccc1C(=O)O<sep>
+mol_demo_0002.png,*c1ccccc1<sep><a>0:NH2</a>
+mol_demo_0003.png,C1CCCCC1<sep><r>0:R</r>
+mol_demo_0004.png,CC(C)(C)OC(=O)N1CCCC1<sep>
+mol_demo_0005.png,O=C1NCCN1<sep><a>4:R1</a>

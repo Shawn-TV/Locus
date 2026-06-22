@@ -1328,7 +1328,7 @@ WORKBENCH_HTML = r"""<!doctype html>
 
       <div class="priority-guide">
         <strong>重点复查说明</strong>
-        前 300 张是按风险分排序的优先人工复查队列；后 3700 张也在全量工作稿里，导出 zip 时会一起保留。
+        重点队列按风险分排序，建议优先人工复查；其他样本也在全量工作稿里，导出 zip 时会一起保留。
       </div>
 
       <div class="search-row">
@@ -1444,7 +1444,7 @@ WORKBENCH_HTML = r"""<!doctype html>
             </div>
             <div class="file-panel">
               <strong>保存文件</strong><br>
-              working_submission.csv：全量 4000 行工作稿<br>
+              working_submission.csv：全量工作稿<br>
               review_overrides.csv：只包含你改过的行<br>
               working_submission_package.zip：点击导出后生成
             </div>

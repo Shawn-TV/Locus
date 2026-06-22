@@ -11,7 +11,7 @@ env/
 
 # Competition data and private outputs are intentionally not published.
 data/
-pic/
+/pic/
 submission_template/
 submission_example/
 Track1-V1-final-submit/
