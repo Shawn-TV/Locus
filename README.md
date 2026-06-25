@@ -1,5 +1,7 @@
 # Locus
 
+中文说明在后面：[点击跳到中文部分](#locus-中文说明)。
+
 Locus is an open-source workflow for optical chemical structure recognition (OCSR) and E-SMILES submission packaging. It was prepared for [Bohrium Science Data Annotation Competition, Track 1](https://www.bohrium.com/competitions/53859761357?tab=introduce), where each molecule image must be converted into an Extended-SMILES result.
 
 The project is designed as a practical competition toolkit rather than a single neural network. It batches recognition requests, generates safer image variants, merges multiple model outputs, renders predictions back into molecule images, and builds the final `submission.csv` + `meta.md` zip expected by the competition platform.
